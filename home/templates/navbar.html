@@ -2,9 +2,13 @@
   <ul>
     <li><a href="{% url 'home' %}">Home</a></li>
     <li><a href="{% url 'exercises_list' %}">Exercises list</a></li>
-    <li><a href="{% url 'signup' %}">Sign up</a></li>
-    <li><a href="">Sign in</a></li>
-    <li><a href="">Log out</a></li>
+    {% if not user.is_authenticated %}
+      <li><a href="{% url 'signup' %}">Sign up</a></li>
+      <li><a href="{% url 'signin' %}">Sign in</a></li>
+    {% endif %}
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'logout' %}">Log out</a></li>
+    {% endif %}
     <li><a href="">Register workout</a></li>
     <li><a href="">Workout Sessions</a></li>
   </ul>
