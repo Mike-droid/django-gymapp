@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from home import views as home_views
 from exercises import views as exercises_views
+from registerworkouts import views as rw_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_views.home, name='home'),
-    path('exercises/', exercises_views.exercises_list, name='exercises_list')
+    path('signup/', home_views.signup, name='signup'),
+    path('exercises/', exercises_views.exercises_list, name='exercises_list'),
+    path('register_workouts/', rw_views.register_workouts, name='register_workouts')
 ]

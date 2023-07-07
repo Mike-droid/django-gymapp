@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% block navbar %}
+    {% include 'navbar.html' %}
+  {% endblock navbar %}
+
+  {% if user.is_authenticated %}
+    <h1>Hello {{ user }}, here you can register your workout sessions!</h1>
+  {% endif %}
+
+  {% block footer %}
+    {% include 'footer.html' %}
+  {% endblock footer %}
+{% endblock content %}
