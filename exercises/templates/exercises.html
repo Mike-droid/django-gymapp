@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% block navbar %}
+    {% include 'navbar.html' %}
+  {% endblock navbar %}
+
+  <h1>Exercises list</h1>
+
+  <ul>
+    {% for exercise in exercises %}
+      <li>
+        <p>
+          {{exercise}}
+        </p>
+        {% load static %}
+        <img src="{{exercise.image.url}}" alt="{{exercise}}">
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% block footer %}
+    {% include 'footer.html' %}
+  {% endblock footer %}
+{% endblock content %}
