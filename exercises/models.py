@@ -2,7 +2,7 @@ from django.db import models
 
 class Exercise(models.Model):
   name = models.CharField(max_length=100)
-  image = models.ImageField(upload_to='exercises/', null=True, blank=True)
+  image = models.ImageField(upload_to='pics', null=True, blank=True)
   muscular_group = models.CharField(max_length=100)
   video = models.URLField(null=True, blank=True)
 
