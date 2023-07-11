@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% block navbar %}
+    {% include 'navbar.html' %}
+  {% endblock navbar %}
+
+  {% if user.is_authenticated %}
+    <h1>Hello {{ user }}, here you can register the day of the workout session</h1>
+
+    <p>Your current sessions:</p>
+    <ul>
+      {% for w_session in workout_sessions %}
+        <li>
+          {{ w_session }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% block footer %}
+    {% include 'footer.html' %}
+  {% endblock footer %}
+{% endblock content %}

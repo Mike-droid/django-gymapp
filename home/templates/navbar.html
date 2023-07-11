@@ -9,7 +9,7 @@
     {% if user.is_authenticated %}
       <li><a href="{% url 'logout' %}">Log out</a></li>
       <li><a href="{% url 'register_workouts' %}">Register a workout session</a></li>
-      <li><a href="">Your workout sessions</a></li>
+      <li><a href="{% url 'workout_sessions' %}">Your workout sessions</a></li>
     {% endif %}
   </ul>
 </nav>

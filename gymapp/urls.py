@@ -21,6 +21,7 @@ from django.urls import path
 from home import views as home_views
 from exercises import views as exercises_views
 from registerworkouts import views as rw_views
+from workoutsessions import views as ws_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +30,6 @@ urlpatterns = [
     path('signin/', home_views.signin, name='signin'),
     path('logout/', home_views.signout, name='logout'),
     path('exercises/', exercises_views.exercises_list, name='exercises_list'),
-    path('register_workouts/', rw_views.register_workouts, name='register_workouts')
+    path('register_workouts/', rw_views.register_workouts, name='register_workouts'),
+    path('workout_sessions/', ws_views.workout_sessions, name='workout_sessions'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

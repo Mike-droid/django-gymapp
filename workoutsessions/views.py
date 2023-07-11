@@ -1,3 +1,12 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .models import Workout_Session
 
-# Create your views here.
+
+@login_required
+def workout_sessions(request):
+  user = request.user
+  workout_sessions = Workout_Session.objects.filter(session__user=user)
+  return render(request, 'workout_sessions.html', {
+    'workout_sessions': workout_sessions,
+  })
