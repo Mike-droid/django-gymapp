@@ -7,6 +7,15 @@
 
   {% if user.is_authenticated %}
     <h1>Hello {{ user }}, here you can register your workout sessions!</h1>
+
+    <p>Your current workouts:</p>
+    <ul>
+      {% for workout in workouts %}
+        <li>
+          {{ workout }}
+        </li>
+      {% endfor %}
+    </ul>
   {% endif %}
 
   {% block footer %}
