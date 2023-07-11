@@ -12,7 +12,9 @@
     <ul>
       {% for workout in workouts %}
         <li>
-          {{ workout }}
+          <a href="{% url 'register_workout_detail' workout.id %}">
+            View details {{ workout }}
+          </a>
         </li>
       {% endfor %}
     </ul>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import RegisterWorkout
 from .forms import RegisterWorkoutForm
@@ -23,4 +23,12 @@ def register_workouts(request):
   return render(request, 'register_workouts.html', {
     'workouts': workouts,
     'form' : form
+  })
+
+
+@login_required
+def register_workout_detail(request, registerworkout_id):
+  workout = get_object_or_404(RegisterWorkout, pk=registerworkout_id)
+  return render(request, 'register_workout_detail.html', {
+    'workout': workout
   })
