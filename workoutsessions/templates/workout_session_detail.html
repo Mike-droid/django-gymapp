@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% block navbar %}
+    {% include 'navbar.html' %}
+  {% endblock navbar %}
+
+  <h2>Edit Workout Session</h2>
+  <form method="post" action="{% url 'workout_session_detail' workout_session.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+  </form>
+
+
+  <h1>Workout Session Details</h1>
+  <ul>
+    <li><strong>User:</strong> {{ workout_session.user.username }}</li>
+    <li><strong>Workout Date:</strong> {{ workout_session.workout_date|date:"d-m-Y" }}</li>
+  </ul>
+
+  <form method="post" action="{% url 'delete_workout_session' workout_session.id %}">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+  </form>
+
+  {% block footer %}
+    {% include 'footer.html' %}
+  {% endblock footer %}
+{% endblock content %}

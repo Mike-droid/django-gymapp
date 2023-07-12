@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Workout_Session
 from .forms import WorkoutSessionForm
@@ -23,3 +23,28 @@ def workout_sessions(request):
     'workout_sessions': workout_sessions,
     'form' : form
   })
+
+
+@login_required
+def workout_session_detail(request, workout_session_id):
+  workout_session = get_object_or_404(Workout_Session, pk=workout_session_id)
+
+  if request.method == 'POST':
+    form = WorkoutSessionForm(request.POST, instance=workout_session)
+    if form.is_valid():
+      form.save()
+      return redirect('workout_session_detail', workout_session_id=workout_session_id)
+  else:
+    form = WorkoutSessionForm(instance=workout_session)
+
+  return render(request, 'workout_session_detail.html', {
+    'workout_session': workout_session,
+    'form': form
+  })
+
+
+@login_required
+def delete_workout_session(request, workout_session_id):
+  workout_session = get_object_or_404(Workout_Session, pk=workout_session_id)
+  workout_session.delete()
+  return redirect('workout_sessions')

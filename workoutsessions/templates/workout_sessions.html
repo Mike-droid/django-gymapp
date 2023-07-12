@@ -12,7 +12,9 @@
     <ul>
       {% for w_session in workout_sessions %}
         <li>
-          Sesión de {{ w_session.user.username }} - {{ w_session.workout_date|date:"d-m-Y" }}
+          <a href="{% url 'workout_session_detail' w_session.id %}">
+            Sesión de {{ w_session.user.username }} - {{ w_session.workout_date|date:"d-m-Y" }}
+          </a>
         </li>
       {% endfor %}
     </ul>
