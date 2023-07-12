@@ -6,6 +6,11 @@
   {% endblock navbar %}
 
   <h1>Register Workout Details</h1>
+  <form method="post" action="{% url 'register_workout_detail' registerworkout_id=workout.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+  </form>
   <ul>
     <li><strong>Exercise:</strong> {{ workout.exercise.name }}</li>
     <li><strong>Session:</strong> {{ workout.session }}</li>

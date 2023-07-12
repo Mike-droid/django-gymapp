@@ -29,8 +29,18 @@ def register_workouts(request):
 @login_required
 def register_workout_detail(request, registerworkout_id):
   workout = get_object_or_404(RegisterWorkout, pk=registerworkout_id)
-  return render(request, 'register_workout_detail.html', {
-    'workout': workout
+
+  if request.method == 'POST':
+    form = RegisterWorkoutForm(request.user, request.POST, instance=workout)
+    if form.is_valid():
+      form.save()
+      return redirect('register_workout_detail', registerworkout_id=registerworkout_id)
+  else:
+    form = RegisterWorkoutForm(request.user, instance=workout)
+
+  return render(request, 'register_workout_detail.html',{
+    'workout': workout,
+    'form': form
   })
 
 
