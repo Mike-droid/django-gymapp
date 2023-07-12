@@ -14,6 +14,11 @@
     <li><strong>Repetitions:</strong> {{ workout.repetitions }}</li>
   </ul>
 
+  <form action="{% url 'register_workout_delete' registerworkout_id=workout.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+  </form>
+
   {% block footer %}
     {% include 'footer.html' %}
   {% endblock footer %}

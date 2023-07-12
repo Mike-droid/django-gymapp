@@ -32,3 +32,12 @@ def register_workout_detail(request, registerworkout_id):
   return render(request, 'register_workout_detail.html', {
     'workout': workout
   })
+
+
+@login_required
+def register_workout_delete(request, registerworkout_id):
+  workout = get_object_or_404(RegisterWorkout, pk=registerworkout_id)
+  if request.method == 'POST':
+    workout.delete()
+    return redirect('register_workouts')
+  return redirect('register_workout_details', registerworkout_id=registerworkout_id)

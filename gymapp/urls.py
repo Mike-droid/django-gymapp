@@ -32,5 +32,6 @@ urlpatterns = [
     path('exercises/', exercises_views.exercises_list, name='exercises_list'),
     path('register_workouts/', rw_views.register_workouts, name='register_workouts'),
     path('register_workouts/<int:registerworkout_id>/', rw_views.register_workout_detail, name='register_workout_detail'),
+    path('register_workouts/<int:registerworkout_id>/delete/', rw_views.register_workout_delete, name='register_workout_delete'),
     path('workout_sessions/', ws_views.workout_sessions, name='workout_sessions'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
